@@ -30,7 +30,7 @@ class ReserveCreate(BaseModel):
             "example": "2025-12-31T23:59:59",
         }
     )
-    duration_minutes: int = Field(ge=60, le=180)
+    duration_minutes: int
 
     model_config = {
         "from_attributes": True
