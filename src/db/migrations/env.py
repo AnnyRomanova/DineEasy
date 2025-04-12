@@ -1,3 +1,8 @@
+import sys
+from pathlib import Path
+
+sys.path.append(str(Path(__file__).resolve().parents[3]))
+
 from sqlalchemy import create_engine
 from alembic import context
 from src.core.settings import get_settings
