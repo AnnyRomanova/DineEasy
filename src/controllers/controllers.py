@@ -119,14 +119,14 @@ class ReservationController:
             reserve_request = select(db_models.Reservation).where(
                 db_models.Reservation.table_id == reserve_data.table_id
             )
-        reservation_result = await session.execute(reserve_request)
-        existing_reservations = reservation_result.scalars().all()
+            reservation_result = await session.execute(reserve_request)
+            existing_reservations = reservation_result.scalars().all()
 
-        for reservation in existing_reservations:
-            booked_start = reservation.reservation_time
-            booked_end = booked_start + timedelta(minutes=reservation.duration_minutes)
-            if desired_time_start < booked_end and desired_time_end > booked_start:
-                raise HTTPException(status_code=400, detail="Столик на это время уже забронирован")
+            for reservation in existing_reservations:
+                booked_start = reservation.reservation_time
+                booked_end = booked_start + timedelta(minutes=reservation.duration_minutes)
+                if desired_time_start < booked_end and desired_time_end > booked_start:
+                    raise HTTPException(status_code=400, detail="Столик на это время уже забронирован")
 
             new_reservation = db_models.Reservation(**reserve_data.model_dump())
             session.add(new_reservation)
