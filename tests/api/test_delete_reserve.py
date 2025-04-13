@@ -15,10 +15,12 @@ async def test_delete_reservation_204(
         "customer_name": "delete_test",
         "table_id": prepare_table,
         "reservation_time": (datetime.now() + timedelta(hours=2)).isoformat(),
-        "duration_minutes": 45
+        "duration_minutes": 45,
     }
 
-    response_create = await async_client.post("/reservations/", json=new_reservation_data)
+    response_create = await async_client.post(
+        "/reservations/", json=new_reservation_data
+    )
     reservation_id = response_create.json()["id"]
 
     response_delete = await async_client.delete(f"/reservations/{reservation_id}")

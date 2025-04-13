@@ -7,7 +7,9 @@ from db.models import Table
 
 
 @pytest.mark.asyncio
-async def test_create_table_and_duplicate(async_client, dine_easy_db: DatabaseConnector):
+async def test_create_table_and_duplicate(
+    async_client, dine_easy_db: DatabaseConnector
+):
     new_table_data = {"name": "test_name", "seats": 2, "location": "test_location"}
 
     response = await async_client.post("/tables/", json=new_table_data)
@@ -17,7 +19,7 @@ async def test_create_table_and_duplicate(async_client, dine_easy_db: DatabaseCo
         "id": ANY,
         "name": "test_name",
         "seats": 2,
-        "location": "test_location"
+        "location": "test_location",
     }
 
     async with dine_easy_db.session_maker() as session:
