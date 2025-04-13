@@ -1,8 +1,8 @@
-"""init
+"""create_tables
 
-Revision ID: f95f6e5ddb04
+Revision ID: 3a1c6b76a190
 Revises:
-Create Date: 2025-04-12 14:37:20.587364
+Create Date: 2025-04-13 22:24:58.281907
 
 """
 
@@ -13,7 +13,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = "f95f6e5ddb04"
+revision: str = "3a1c6b76a190"
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -35,7 +35,7 @@ def upgrade() -> None:
         sa.Column("id", sa.Integer(), autoincrement=True, nullable=False),
         sa.Column("customer_name", sa.String(), nullable=False),
         sa.Column("table_id", sa.Integer(), nullable=False),
-        sa.Column("reservation_time", sa.DateTime(), nullable=False),
+        sa.Column("reservation_time", sa.DateTime(timezone=True), nullable=False),
         sa.Column("duration_minutes", sa.Integer(), nullable=False),
         sa.ForeignKeyConstraint(
             ["table_id"],

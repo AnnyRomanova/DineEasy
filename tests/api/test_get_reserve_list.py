@@ -1,3 +1,5 @@
+from datetime import timezone
+
 import pytest
 
 from db.models import Reservation
@@ -16,7 +18,9 @@ async def test_get_reservations(
             "id": reservation.id,
             "customer_name": reservation.customer_name,
             "table_id": reservation.table_id,
-            "reservation_time": reservation.reservation_time.isoformat(),
+            "reservation_time": reservation.reservation_time.astimezone(timezone.utc)
+            .isoformat(timespec="seconds")
+            .replace("+00:00", "Z"),
             "duration_minutes": reservation.duration_minutes,
         }
         for reservation in reservations

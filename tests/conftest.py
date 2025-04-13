@@ -36,8 +36,8 @@ def table_controller(
 def reserve_controller(
     dine_easy_db: DatabaseConnector,
 ) -> reserve_module_controller.ReservationController:
-    reserve_module_controller.reserve_controller = reserve_module_controller.ReservationController(
-        dine_easy_db
+    reserve_module_controller.reserve_controller = (
+        reserve_module_controller.ReservationController(dine_easy_db)
     )
     yield reserve_module_controller.reserve_controller
 
