@@ -1,5 +1,5 @@
 import logging
-from datetime import timedelta, datetime
+from datetime import timedelta, datetime, timezone
 
 from fastapi import HTTPException
 
@@ -42,7 +42,7 @@ class ReservationController:
     ) -> pydentic_models.ReserveOUT:
         logger.info("Request to add new reservation")
 
-        if reserve_data.reservation_time < datetime.now():
+        if reserve_data.reservation_time < datetime.now(timezone.utc):
             raise HTTPException(
                 status_code=400, detail="Нельзя забронировать столик в прошлом"
             )

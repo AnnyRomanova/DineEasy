@@ -1,11 +1,13 @@
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 import pytest
 
 
 @pytest.mark.asyncio
 async def test_create_reservation_and_duplicate(async_client, prepare_table: int):
-    reservation_time = (datetime.now() + timedelta(hours=1)).replace(microsecond=0)
+    reservation_time = (datetime.now(timezone.utc) + timedelta(hours=1)).replace(
+        microsecond=0
+    )
 
     new_reservation_data = {
         "customer_name": "test_name",
@@ -26,7 +28,9 @@ async def test_create_reservation_and_duplicate(async_client, prepare_table: int
 
 @pytest.mark.asyncio
 async def test_create_reservation_in_the_past(async_client, prepare_table: int):
-    reservation_time = (datetime.now() - timedelta(hours=2)).replace(microsecond=0)
+    reservation_time = (datetime.now(timezone.utc) - timedelta(hours=2)).replace(
+        microsecond=0
+    )
 
     new_reservation_data = {
         "customer_name": "past_client",

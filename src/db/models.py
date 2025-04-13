@@ -19,7 +19,7 @@ class Reservation(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     customer_name = Column(String, nullable=False)
     table_id = Column(ForeignKey("tables.id"), nullable=False)
-    reservation_time = Column(DateTime, nullable=False)
+    reservation_time = Column(DateTime(timezone=True), nullable=False)
     duration_minutes = Column(Integer, nullable=False)
 
     table = relationship("Table", back_populates="reservations")

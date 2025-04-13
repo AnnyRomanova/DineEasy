@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 import pytest
 from db.connector import DatabaseConnector
@@ -14,7 +14,9 @@ async def test_delete_reservation_204(
     new_reservation_data = {
         "customer_name": "delete_test",
         "table_id": prepare_table,
-        "reservation_time": (datetime.now() + timedelta(hours=2)).isoformat(),
+        "reservation_time": (
+            datetime.now(timezone.utc) + timedelta(hours=2)
+        ).isoformat(),
         "duration_minutes": 45,
     }
 

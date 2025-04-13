@@ -7,10 +7,8 @@ class ReserveCreate(BaseModel):
     customer_name: str = Field(min_length=2, max_length=100)
     table_id: int
     reservation_time: datetime = Field(
-        description="Дата и время бронирования в формате ISO 8601",
-        json_schema_extra={
-            "example": "2025-12-31T23:59:59",
-        },
+        description="Дата и время бронирования (ISO 8601 с timezone)",
+        json_schema_extra={"example": "2025-12-31T23:59:59+00:00"},
     )
     duration_minutes: int
 
