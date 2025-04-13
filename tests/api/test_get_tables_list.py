@@ -15,7 +15,7 @@ async def test_get_tables(async_client, tables: list[Table]):
             "id": table.id,
             "name": table.name,
             "seats": table.seats,
-            "location": table.location
+            "location": table.location,
         }
         for table in tables
     ]

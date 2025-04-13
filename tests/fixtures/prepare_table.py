@@ -7,11 +7,7 @@ from db.models import Table
 
 @pytest.fixture
 def table() -> Table:
-    return Table(
-        name="test_name",
-        seats=6,
-        location="test_location"
-    )
+    return Table(name="test_name", seats=6, location="test_location")
 
 
 @pytest_asyncio.fixture

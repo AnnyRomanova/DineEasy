@@ -4,10 +4,10 @@ from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 class DatabaseConnector:
 
     def __init__(
-            self,
-            db_url: str,
-            max_idle_conns: int = 2,
-            max_open_conn: int = 16,
+        self,
+        db_url: str,
+        max_idle_conns: int = 2,
+        max_open_conn: int = 16,
     ):
         self._engine = create_async_engine(
             db_url,

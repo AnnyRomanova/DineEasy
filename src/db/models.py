@@ -3,8 +3,9 @@ from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
 
 Base = declarative_base()
 
+
 class Table(Base):
-    __tablename__ = 'tables'
+    __tablename__ = "tables"
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String, nullable=False)
     seats = Column(Integer, nullable=False)
@@ -14,10 +15,10 @@ class Table(Base):
 
 
 class Reservation(Base):
-    __tablename__ = 'reservations'
+    __tablename__ = "reservations"
     id = Column(Integer, primary_key=True, autoincrement=True)
     customer_name = Column(String, nullable=False)
-    table_id = Column(ForeignKey('tables.id'), nullable=False)
+    table_id = Column(ForeignKey("tables.id"), nullable=False)
     reservation_time = Column(DateTime, nullable=False)
     duration_minutes = Column(Integer, nullable=False)
 

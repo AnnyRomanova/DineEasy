@@ -8,13 +8,10 @@ from db.models import Table
 @pytest.fixture
 def tables() -> list[Table]:
     return [
-        Table(
-            name=f"test_name_{i}",
-            seats=i,
-            location=f"test_location_{i}"
-        )
+        Table(name=f"test_name_{i}", seats=i, location=f"test_location_{i}")
         for i in range(1, 11)
     ]
+
 
 @pytest_asyncio.fixture
 async def prepare_tables(dine_easy_db: DatabaseConnector, tables: list[Table]) -> None:

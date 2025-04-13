@@ -9,7 +9,9 @@ class DatabaseConfig(BaseSettings):
     DB: str
 
     def make_url(self, driver: str) -> str:
-        return f"{driver}://{self.USER}:{self.PASSWORD}@{self.HOST}:{self.PORT}/{self.DB}"
+        return (
+            f"{driver}://{self.USER}:{self.PASSWORD}@{self.HOST}:{self.PORT}/{self.DB}"
+        )
 
     @property
     def asyncpg_url(self) -> str:
