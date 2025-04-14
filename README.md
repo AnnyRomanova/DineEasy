@@ -1,5 +1,5 @@
 <div id="header" align="left">
-  <img src="https://giphy.com/gifs/jess-illustration-yummy-delicious-nnihjfnlmVeEFqXEy3>
+  <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWR2NGF1MmZ2Z3p0ZmxkZjA3emdtY2p1NWxmZWVibXFuaHVja2ljOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/nnihjfnlmVeEFqXEy3/giphy.gif">
 </div>
 
 # DineEasy 🍽️ — API для управления бронированием столов
