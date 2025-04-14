@@ -2,6 +2,11 @@ import pytest
 import pytest_asyncio
 from httpx import AsyncClient, ASGITransport
 
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
+
 from app import app
 from core.settings import Settings, get_settings
 from db.connector import DatabaseConnector
