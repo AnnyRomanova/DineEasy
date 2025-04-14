@@ -1,0 +1,27 @@
+services:
+  app:
+    container_name: DineEasy_app
+    build: .
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    restart: always
+    env_file:
+      - .env
+    environment:
+      ENV_MODE: docker
+
+  db:
+    image: postgres:15
+    container_name: DineEasy_postgres
+    env_file:
+      - .env
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  db_data:
