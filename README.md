@@ -1,5 +1,5 @@
 <div id="header" align="left">
-  <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWR2NGF1MmZ2Z3p0ZmxkZjA3emdtY2p1NWxmZWVibXFuaHVja2ljOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/nnihjfnlmVeEFqXEy3/giphy.gif">
+  <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExeDh1NjE3M24zdzRmbTlyNDl3MjhtbW9tMjUyeXJiMjRnbXRmY2lvYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/pzGIuR1UeI2oFhyqP1/giphy.gif">
 </div>
 
 # DineEasy 🍽️ — API для управления бронированием столов
@@ -60,7 +60,6 @@ ENV_MODE=local
 docker-compose build
 docker-compose up -d
 ```
-#### При запуске внутри Docker переменная ENV_MODE автоматически устанавливается в docker, чтобы использовать DB__HOST=db
 
 ### 4. Применение миграций
 ```commandline
