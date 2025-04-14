@@ -1,4 +1,5 @@
 from pydantic_settings import BaseSettings
+import os
 
 
 class DatabaseConfig(BaseSettings):
@@ -10,8 +11,13 @@ class DatabaseConfig(BaseSettings):
 
     def make_url(self, driver: str) -> str:
         return (
-            f"{driver}://{self.USER}:{self.PASSWORD}@{self.HOST}:{self.PORT}/{self.DB}"
+            f"{driver}://{self.USER}:{self.PASSWORD}@{self.resolved_host}:{self.PORT}/{self.DB}"
         )
+
+    @property
+    def resolved_host(self) -> str:
+        env_mode = os.getenv("ENV_MODE", "local")
+        return "db" if env_mode == "docker" else self.HOST
 
     @property
     def asyncpg_url(self) -> str:

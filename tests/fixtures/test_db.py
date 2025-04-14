@@ -26,8 +26,8 @@ def database(settings: Settings) -> DatabaseConfig:
 
 @pytest.fixture(scope="session")
 def prepare_test_database(database_name: str, database: DatabaseConfig) -> None:
-    real_database_dsn = f"postgresql://{database.USER}:{database.PASSWORD}@{database.HOST}:{database.PORT}/{database.DB}"
-    test_database_dsn = f"postgresql://{database.USER}:{database.PASSWORD}@{database.HOST}:{database.PORT}/{database_name}"
+    real_database_dsn = f"postgresql://{database.USER}:{database.PASSWORD}@{database.resolved_host}:{database.PORT}/{database.DB}"
+    test_database_dsn = f"postgresql://{database.USER}:{database.PASSWORD}@{database.resolved_host}:{database.PORT}/{database_name}"
     with create_engine(
         real_database_dsn, isolation_level="AUTOCOMMIT"
     ).connect() as connection:
@@ -60,7 +60,7 @@ def prepare_test_database(database_name: str, database: DatabaseConfig) -> None:
 def dine_easy_db(
     prepare_test_database: str, database: DatabaseConfig, database_name: str
 ) -> DatabaseConnector:
-    conf = database.model_copy(update={"DB": database_name})
+    conf = database.model_copy(update={"DB": database_name, "HOST": database.resolved_host})
     _db = DatabaseConnector(conf.asyncpg_url)
     yield _db
     start_time = datetime.now()

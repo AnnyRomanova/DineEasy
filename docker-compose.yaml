@@ -9,6 +9,8 @@ services:
     restart: always
     env_file:
       - .env
+    environment:
+      ENV_MODE: docker
 
   db:
     image: postgres:15
